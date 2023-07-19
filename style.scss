@@ -1,0 +1,630 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap');
+
+@import './module/keyframes';
+* {
+     padding: 0;
+     margin: 0;
+     box-sizing: border-box;
+}
+
+$cMainSiteTextColor: black; 
+$cHeaderBackgroundColor:rgba(0,0,0,0.8); 
+$cHeaderTextColor:white; 
+$cChageHeaderColor: white;
+$cAboutSectionColor: white;
+$cSkillSectionBorder: 1px solid black; 
+$cPortfolioBGCollor: white;
+$cPortfolioSectionBorder: 1.5px solid black; 
+$cAccordionSectionBorder: 1.5px solid black; 
+$cAccordionSectionBorder2: 2.5px solid black; 
+@mixin siteTites  {
+    font-size: 24px;
+    color: $cMainSiteTextColor;
+    font-weight: 200;
+    letter-spacing: 0.02rem;
+    margin-bottom: 20px;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    overflow-x: hidden;
+}
+
+
+ 
+.wrapper  {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.wraapper-new {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding:0 20px;
+    margin-bottom: 110px;
+    
+}
+
+
+img {
+    max-width: 100%;
+    vertical-align: bottom;
+}
+
+a {
+ text-decoration: none;
+}
+
+li {
+    list-style: none;
+}
+
+#header {
+    height: 10vh;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    & .site-title {
+        font-size: 24px;
+        font-weight: 200;
+    }
+
+    & .top-nav {
+       & ul {
+         & li {
+            display: inline-block;
+            margin-left: 25px;
+
+            & a {
+                color: $cMainSiteTextColor;
+            }
+         }
+       }  
+    }
+
+    & .burger-box {
+        width: 30px;
+        height: 30px;
+        position: relative;
+        cursor: pointer;
+        display: none;
+
+        & div {
+            position: absolute;
+            width: 30px;
+            height: 1.8px;
+            border-radius: 0.2px;
+            transition: all 0.3s ease;
+            background-color: $cMainSiteTextColor;
+            &:nth-child(1) {
+                top: 20%;
+            }
+
+            &:nth-child(2) {
+                top: 50%;
+            }
+
+            &:nth-child(3) {
+                top: 80%;
+            }
+        }
+    }
+}
+
+main {
+    & .conect-container {
+        max-width: 700px;
+        margin: 0 auto ;
+        padding: 110px 20px;
+
+        & h2 {
+            text-align: center;
+            @include siteTites; 
+        }
+        
+        p {
+            text-align: center;
+        }
+
+        & .conect-text {
+            opacity: 0;
+            &.active {
+                opacity: 1;
+                animation: activeAnimetion02 0.7s ease-in-out; 
+            }
+        }
+    }
+
+    #container {
+        & .about {
+            &__text {
+                width: 570px;
+                position: relative;
+                margin-left: 20px;
+                padding: 55px 60px;
+                z-index: 40;
+                background-color: $cAboutSectionColor;
+                opacity: 0;
+
+                & h2 {
+                    margin-bottom: 20px;
+                    @include siteTites(); 
+                }
+            }
+
+            &__image {
+                display: flex;
+                justify-content: space-between;
+                margin-top: -40px;
+                & .image-left {
+                    width: 50%; 
+                    // display: none;
+                    opacity: 0;
+                }
+
+                & .image-right {
+                    width: 50%;
+                    opacity: 0;
+                }
+            }
+        }
+
+        & .skill {
+            &__title {
+                @include siteTites(); 
+                text-align: center; 
+                margin-bottom: 35px;
+            }
+            &__items {
+                display: flex;
+                justify-content: space-between;
+                & .item {
+                    width: 300px;
+                    border:$cSkillSectionBorder;
+                    opacity: 0;
+                    
+                    &.active {
+                        animation: itemsAnimetion 0.8s ease-in-out forwards;  
+                        @for $i from 1 through 4 {
+                            &:nth-child(#{$i}) {
+                                animation-delay: $i * 0.2s;
+                            }
+                        }
+                    }
+                    & .number {
+                        font-size: 20px;
+                        margin: 30px auto 0 auto;
+                        text-align: center;
+                        width: 56px;
+                        height: 56px;
+                        border-radius: 50%;
+                        border: $cSkillSectionBorder;
+                        line-height: 56px;
+                    }
+
+                    & .icon-container {
+                        padding: 20px 0;
+                        text-align: center;
+                        i {
+                            font-size: 60px;
+                            // transform: scale(0.4);
+                        }
+
+                        & p {
+                            font-size: 20px;
+                            margin-top: 5px;
+                        }
+
+                        & .skill-text {
+                            width: 70%;
+                            margin: 40px auto;
+                            line-height: 24px;
+                            font-size: 14px;
+                            font-weight: 400;
+                            text-align: start;
+                        }
+                    }
+
+                }
+            }
+        }
+
+        & #portfolio {
+             & .portfolio-title {
+                @include siteTites(); 
+                margin-bottom: 35px ;
+             }
+
+             & .portfolio-text {
+                margin-bottom: 35px;
+             }
+
+             & .portfolio-container {
+                display:flex;
+                justify-content: space-between;
+                 & .portfolio-box {
+                    width: 46%;
+                    opacity: 0;
+
+                    &.active {
+                        opacity: 1;
+                        animation: itemsAnimetion 0.6s ease-in-out; 
+                    }
+                    
+                    & .portfolio-content {
+                        position: relative;
+                        width: 100%;
+                        margin-bottom: 20px;
+                        & h3 {
+                            width: 200px;
+                            height: 50px;
+                            position: absolute;
+                            z-index: 2;
+                            left: 0;
+                            bottom: 0;
+                            background-color: $cPortfolioBGCollor;
+                            font-weight: 200;
+                            text-align: center;
+                            line-height: 50px;
+                            border: $cPortfolioSectionBorder;
+                            font-size: 16px;
+                        }
+                    }
+
+                    & li {
+                        margin: 20px 0;
+                    }
+                 }
+             }
+        }
+        .accordion {
+
+            width: 100%;
+            padding: 0;
+            & .accordion-title {
+                @include siteTites(); 
+                text-align: center ;
+                margin-bottom: 35px;
+            }
+
+            & ul {
+                width: 50%;
+                margin: 45px auto 0 auto;
+
+
+                & li {
+                    border: $cAccordionSectionBorder;
+                    margin-bottom: 30px;
+                    padding: 35px;
+                    border-radius: 10px;
+                    cursor: pointer;
+                    font-size: 14px;
+                    line-height: 24px;
+                    & dl {
+                        & .accordion__section {
+                            position: relative ;
+                            &::after {
+                            content: '';
+                            position: absolute;
+                            top: 0;
+                            bottom: 0;
+                            margin: auto;
+                            right: 5px;
+                            transition: all 0.3s ease ;
+                            display: block;
+                            width: 8px;
+                            height: 8px;
+                            border-top: $cAccordionSectionBorder2;
+                            border-right: $cAccordionSectionBorder2;
+                            transform: rotate(135deg);
+                            }
+                        }
+
+                        & .accordinon-content {
+                            display: none;
+                            margin-top: 35px;
+                            padding: 35px;
+                            background-color: #f0f0f0;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+
+footer  {
+    & .footer-title {
+         text-align: center;
+         font-size: 22px;
+         padding: 55px 0;
+         font-weight: 100;
+         & span {
+            opacity: 0;
+            display: inline-block;
+         }
+
+         &.active {
+            & span {
+                // opacity: 1;
+                animation: kf-animate-chars 1.6s ease-in-out forwards;
+                @for $i from 1 through 22 {
+                    &:nth-child(#{$i}) {
+                        animation-delay: $i * 0.072s;
+                    }
+                }
+            }
+         }
+    }
+}
+
+main {
+    & #container {
+        & .accordion {
+            & .accordion__section.open {
+                &::after {
+                     transform: rotate(-45deg);
+                }
+            }
+            & .accordinon-content.open {
+                display: block;
+            }
+        }
+    }
+}
+
+@media screen and (max-width:768px) {
+    #header {
+        overflow: hidden;
+       & .top-nav {
+            position: fixed;
+            top: 0;
+            right: 0;
+            width: 100%;
+            height: 100vh; 
+            transform: translateX(100%);
+            background-color: $cHeaderBackgroundColor;
+            z-index: 2;
+            transition: all 0.2s ease;
+            overflow-x: hidden;
+            z-index: 10;
+
+            & ul {  
+                padding-top: 60px;
+                & li  {
+                    margin-left: 0;
+                    display: block;
+                    margin-bottom: 20px;
+                    text-align: center;
+                   & a {                         
+                        font-size: 17px;
+                        color: $cHeaderTextColor;
+                    }
+                }
+            }
+        }
+
+        & .burger-box {
+            display: block ;
+            position: relative;
+            z-index: 40;
+            transition: all 0.3s ease;
+        }
+    }
+
+    
+    .hero-image {
+        padding: 0;
+
+         & img {
+            width: 100%;
+            height: 90vh;
+            object-fit: cover;
+         }
+    }
+
+    main {
+        & #container {
+            & .about {
+                &__text {
+                    width: 100%;
+                    padding: 0;
+                    margin: 0;
+                }
+
+                &__image {
+                    flex-direction: column;
+                    margin: 0;
+                    & .image-left {
+                        width: 70%;
+                        margin: 35px auto 0 0;
+                        
+                    }
+
+                    & .image-right {
+                        width: 70%;
+                        margin: 30px 0 0 auto;
+                        & img {
+                            text-align: right;
+                        }
+                    }
+                }
+            }
+
+            & .skill  {
+                &__items {
+                    flex-direction: column;
+                    & .item  {
+                        width: 100%;
+                        display: flex;
+                        // align-items: center;
+                        justify-content: space-between;
+                        align-items: center;
+                        margin-bottom: 15px;
+                        & .number {
+                           width: 40px;
+                           height: 40px;
+                           line-height: 40px;
+                           font-size: 14px; 
+                           margin: 0 auto;
+                        }
+                        & .icon-container {
+                            width: 85%;
+                            text-align: start;
+                            padding: 25px 15px;
+                            & i  {
+                                font-size: 20px;
+                            }
+
+                            & p {
+                                font-size: 20px;
+                                margin-top: 0;
+                                display: inline-block;
+                            }
+                            & .skill-text {
+                                margin: 0;
+                                width: 100%;
+                            }
+                        }
+                    }
+                }
+            }
+            
+            & #portfolio   {
+                & .portfolio-container  {
+                    flex-direction: column;
+                    & .portfolio-box  {
+                        width: 100%;
+                    }
+                }
+            }
+
+
+            & .accordion {
+                & ul {
+                    width: 100%;
+                    padding: 0 20px;
+                }
+            }
+        }
+    }
+
+}
+
+#header {
+    & .top-nav.active {
+        transform: translateX(0);
+     }
+
+    & .burger-box.active {
+        div {
+            background-color: $cChageHeaderColor;
+             &:nth-child(1) {
+                transform: rotate(-45deg);
+                top: 50%;
+             }
+
+             &:nth-child(2) {
+                opacity: 0;
+             }
+
+             &:nth-child(3) {
+                transform: rotate(45deg);
+                top: 50%;
+             }
+        }
+    }
+}
+
+.loading-container {
+    position: fixed;
+    z-index: 100;
+    width: 100%;
+    height: 100vh;
+    background-color: white; 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    transition: all 0.3s ease-in-out;
+}
+
+.loading-container.down {
+    opacity: 0;
+    visibility:hidden;
+}
+
+ .loading-text {
+    // display: inline-block;
+    font-weight: 100;
+    & span {
+        display: inline-block;
+        letter-spacing: 0.04rem;
+
+        // opacity: 0;
+        animation-timing-function: cubic-bezier(0.39, 1.57, 0.58, 1);
+        animation: kf-animate-chars 1.5s infinite ease-in-out; 
+        @for $i from 1 through 10 {
+            &:nth-child(#{$i}) {
+                animation-delay: $i * 0.075s;
+            }
+        }
+    }
+}
+
+.load-5 {
+    display: inline-block;
+    height: 50px;
+    width: 50px;
+    margin: 50px;
+    position: relative;
+
+    & > div {
+         width:  50px;
+         height: 50px;
+         position: absolute;
+         left: 0;
+         border: 4px solid rgba(5, 124, 255, 1); 
+        animation: loading-01 1.5s infinite ease-in-out; 
+
+         &:nth-child(1) {
+            width: 30px;
+            height: 30px;
+            top: 10px;
+            left: 10px;
+            animation: loading-02 1.5s infinite ease-in-out; 
+         }
+
+         &:nth-child(2) {
+            width: 10px;
+            height: 10px;
+            background: rgba(5, 124, 255, 1); 
+            top: 20px;
+            left: 20px;
+            animation: loading-03 1.5s infinite ease-in-out; 
+         }
+    }
+}
+
+#container {
+    & .about {
+        &__text.active {
+            animation: activeAnimetion03  0.6s ease-in-out; 
+            opacity: 1;
+        }
+        &__image.active {
+            & .image-left {
+                animation:  activeAnimetion 0.6s ease-in-out;
+                opacity: 1;
+            }
+
+            & .image-right {
+                animation:  activeAnimetion02 0.6s ease-in-out;
+                opacity: 1;
+                animation-delay: 0.2;
+            }
+        }
+    }
+}
