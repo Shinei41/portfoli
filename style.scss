@@ -341,22 +341,6 @@ footer  {
          font-size: 22px;
          padding: 55px 0;
          font-weight: 100;
-         & span {
-            opacity: 0;
-            display: inline-block;
-         }
-
-         &.active {
-            & span {
-                // opacity: 1;
-                animation: kf-animate-chars 1.6s ease-in-out forwards;
-                @for $i from 1 through 22 {
-                    &:nth-child(#{$i}) {
-                        animation-delay: $i * 0.072s;
-                    }
-                }
-            }
-         }
     }
 }
 

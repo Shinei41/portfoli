@@ -34,7 +34,6 @@ const textFormatter = {
   };
   
 const ta = textFormatter.splitAndWrap('.loading-text');
-const ta01 = textFormatter.splitAndWrap('.footer-title'); 
 
 document.addEventListener('DOMContentLoaded', () => {
         
@@ -58,9 +57,7 @@ const aboutText = document.querySelector('.about__text');
 const skills = document.querySelectorAll('.item');
 const portfolioBox = document.querySelectorAll('.portfolio-box'); 
 const ConectText = document.querySelector('.conect-text');
-const FooterText = document.querySelector('.footer-title'); 
-console.log(FooterText); 
-console.log(portfolioBox)
+
 
 class IntersectionObserverWrapper {
     constructor(element, threshold) {
@@ -101,11 +98,5 @@ const SkillsScroll = new IntersectionObserverWrapper(skills, 1);
 SkillsScroll.observes(); 
 const PortfolioScroll = new IntersectionObserverWrapper(portfolioBox, 1); 
 PortfolioScroll.observes(); 
-const FooterTitleScroll = new IntersectionObserverWrapper(FooterText, 1); 
-FooterTitleScroll.observe(); 
 
-
-// const IntersecctionImageRight = new IntersectionObserverWrapper(imageRight, 1);  
-// IntersectionImageLeft.observe();
-// IntersecctionImageRight.observe(); 
 
